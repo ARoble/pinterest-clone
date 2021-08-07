@@ -19,7 +19,7 @@ function Login() {
       axios
         .post("http://localhost:8000/api/v1/auth/register", user)
         .then((res) => console.log(res))
-        .catch((e) => console.log(e));
+        .catch((e) => setError({ message: e.response.data.message }));
     } else {
       setError({ message: "Please fill out all required fields" });
     }
@@ -53,7 +53,7 @@ function Login() {
               onChange={(e) => setEmail(e.target.value)}
             />
             <input
-              type="text"
+              type="password"
               placeholder="Create a Passwords"
               onChange={(e) => setPassword(e.target.value)}
             />
